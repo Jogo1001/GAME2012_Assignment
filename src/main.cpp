@@ -132,9 +132,18 @@ int main(void)
         case 3:
             
             glUseProgram(shaderUniformColor);
+
+          
             glUniformMatrix4fv(u_world, 1, GL_FALSE, ToFloat16(world).v);
+
+         
             glUniform3f(u_color, 0.0f, 0.0f, 1.0f);
-            glUniform1f(u_intensity, 1.0f);
+
+            
+            float fadeIntensity = (sinf(time) + 1.0f) * 0.5f;  
+            glUniform1f(u_intensity, fadeIntensity);
+
+          
             glDrawArrays(GL_TRIANGLES, 0, 3);
             break;
 
