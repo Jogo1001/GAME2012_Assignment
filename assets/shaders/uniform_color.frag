@@ -7,6 +7,6 @@ out vec4 FragColor;
 
 void main()
 {
-    FragColor = vec4(u_color, u_intensity); // Use u_intensity as alpha for fading
+    FragColor = vec4(u_color, 1.0) * u_intensity; // Use u_intensity as alpha for fading
 }
     
