@@ -130,17 +130,29 @@ int main(void)
 
         // Hint: Make intensity change from 0 to 1 using a periodic function (sin or cos)
         case 3:
-            
+        {
+           
+            float fadeIntensity;
+            float red, green, blue;
+
             glUseProgram(shaderUniformColor);
             glUniformMatrix4fv(u_world, 1, GL_FALSE, ToFloat16(world).v);
+
+         
             fadeIntensity = (sinf(time) + 1.0f) * 0.5f;
             glUniform1f(u_intensity, fadeIntensity);
-            float red = (sinf(time) + 1.0f) * 0.5f;
-            float green = (sinf(time + 2.0f) + 1.0f) * 0.5f;
-            float blue = (sinf(time + 4.0f) + 1.0f) * 0.5f;
+
+            // Calculate the color based on time
+            red = (sinf(time) + 1.0f) * 0.5f;
+            green = (sinf(time + 2.0f) + 1.0f) * 0.5f;
+            blue = (sinf(time + 4.0f) + 1.0f) * 0.5f;
+
             glUniform3f(u_color, red, green, blue);
+
+
             glDrawArrays(GL_TRIANGLES, 0, 3);
-            break;
+        }
+        break;
 
         // Hint: Use the Translate function
         case 4:
